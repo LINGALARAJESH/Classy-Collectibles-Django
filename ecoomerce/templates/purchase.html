@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CLASSY COLLECTIBLES-Purchase</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="https://static.vecteezy.com/system/resources/thumbnails/011/401/535/small/online-shopping-trolley-click-and-collect-order-logo-design-template-vector.jpg" rel="icon">
+  <link href="{% static "assets/img/apple-touch-icon.png"%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  <!-- Fontsawosme -->
+  
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static "assets/vendor/aos/aos.css" %}" rel="stylesheet">
+  <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/bootstrap-icons/bootstrap-icons.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/boxicons/css/boxicons.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/glightbox/css/glightbox.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/remixicon/remixicon.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/swiper/swiper-bundle.min.css"%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static "assets/css/style.css"%}" rel="stylesheet">
+
+  <style>
+    .cont{
+        display:flex;
+        flex-direction:column;
+        width:250px;
+        border-radius:8px;
+        transition:.5s;
+    }
+    .imgg:hover{
+      transform:translate(10px,5px);
+      box-shadow:-10px -5px 10px gray ;
+  }
+
+    .imgg{
+      margin-top:10px;
+      width:230px;
+      height:200px;
+      object-fit:cover;
+      margin:auto;
+      transition:.5s;
+    }
+    .imgmain{
+      margin:10px auto 0 auto;
+    }
+    .header{
+      font-size:20px;
+      font-weight:600;
+      margin-bottom:0;
+    }
+    .data{
+      padding:10px;
+    }
+    .description{
+      font-size:14;
+      color:#999;
+      margin-bottom:0px;
+    }
+    .price{
+      font-size:14px;
+      color:black;
+      margin-bottom:0px;
+    }
+    .price span{
+      font-size:16px;
+      color:black;
+    }
+    .stars i{
+        color:gold;  
+    }
+    .buttonn{
+          width:100px;
+          height:30px;
+          color: #3498db;
+          border:2px solid #3498db;
+          font-size:12px;
+          border-radius:5px;
+          background-color:white;
+          transition:0.5s;
+    }
+    .buttonn:hover{
+      background-color:#3498db;
+      color: #fff;
+      border:2px solid #fff;
+    }
+    .bmm{
+      display:flex;
+      justify-content:space-between;
+
+    }
+    .bnn{
+      width:30px;
+      height:30px;
+      color: #3498db;
+      border:2px solid #3498db;
+      font-size:12px;
+      border-radius:15px;
+      background-color:white;
+      transition:0.5s;
+}
+.bnn:hover{
+  background-color:#3498db;
+  color: #fff;
+  border:2px solid #fff;
+}
+
+    .main_cont{
+      display:grid;
+      grid-template-columns:auto auto auto auto auto;
+      gap:10px;
+      box-sizing:border-box;
+    }
+
+
+    @media(max-width:1350px){
+      .cont{
+        width:250px;
+    }
+    .imgg{
+      width:230px;
+    }
+    .main_cont{
+      grid-template-columns:auto auto auto auto;
+    }
+    }
+    @media(max-width:1150px){
+    .main_cont{
+      grid-template-columns:auto auto auto ;
+    }
+  }
+    @media(max-width:880px){
+      .cont{
+        width:230px;
+    }
+    .imgg{
+      width:210px;
+    }
+
+    }
+    @media(max-width:820px){
+      .main_cont{
+        grid-template-columns:auto auto ;
+      }
+    }
+    @media(max-width:450px){
+      .main_cont{
+        grid-template-columns:auto  ;
+        justify-content:center;
+      }
+    
+    }
+    .cartbtn{
+          background-color:white;
+          transition:0.5s;
+          padding: 10px 20px;
+          font-size: 15px;
+          color: #222222;
+          border:none;
+    }
+    button i{
+      font-size:20px;
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: Vesperr
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="sticky-top  d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo d-flex">
+        <h1><a href="index.html">CLASSY COLLECTIBLES</a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/purchase/">Purchases</a></li>
+          <li><a class="nav-link scrollto" href="/checkout">Checkout</a></li>
+          <li><a class="nav-link scrollto " href="/orders/{{user.email}}">Orders</a></li>
+          <li><a class="nav-link scrollto " href="/#aboutus">About Us</a></li>
+          <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
+          {% if request.user.is_authenticated %}
+          <button type="button" class="cartbtn" id="popcart" data-toggle="popover" data-container="body"
+           data-placement="bottom" data-html="true"><i class="bi bi-bag-dash w-2"></i> (<span id="cart">0</span>)</button>
+          <li><a class="getstarted scrollto" href="#about">Welcome {{user.username}}</a></li>
+          <li><a class="nav-link scrollto" href="/auth/login/">Logout</a></li>
+          {% else %}
+          <li><a class="getstarted scrollto" href="/auth/signin/">Signup</a></li>
+          <li><a class="getstarted scrollto" href="/auth/login/">Login</a></li>
+          {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <br/>
+        <div class="section-title" data-aos="fade-up">
+          <h2>Products</h2>
+        </div>
+        {%for product,range,nSlides in allProds%}
+        <br/>
+        <div  class="container ">
+          <h4 class="my-3 text-center text-success bg-light">
+            {{product.0.category}} Big billon Sales
+          </h4>
+        </div>
+        <br/>
+        <div class="main_cont" data-aos="fade-up" data-aos-delay="400" > 
+        
+            {% for i in product %}
+          <div  class="cont"  data-aos="fade-up" data-aos-delay="400">
+            <div class="imgmain">
+            <img class="imgg" src="/media/{{i.image}}" alt="Card image cap">
+            </div>
+            <div class="data">
+              <p class="header"   id="namepr{{i.id}}">{{i.product_name}}</p>
+              <p class="description"  >{{i.desc|slice:"0:55"}}...</p>
+              <p class="price">Price:<span id="pricepr{{i.id}}">{{i.price}} INR</span></p>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+            </div >
+            <div class="bmm">
+            <span id="divpr{{i.id}}" class="divpr"> <button class=" cart btn-sm mt-0 buttonn" id="pr{{i.id}}" >AddToCart</button> </span> 
+              <a class="viewcard " href="/media/{{i.image}}" > <button class="cart buttonn">View</button></a>
+            </div>
+          </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+  <footer
+          class="text-center text-lg-start text-dark"
+          style="background-color: #fff";
+          font-size:15px;
+          font-weight:400;
+          >
+    <!-- Section: Social media -->
+    <section
+             class="d-flex justify-content-between p-2 text-white"
+             style="background-color: #3498db;"
+             
+             >
+      <!-- Left -->
+      <div class="me-5">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+      <div>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="m-0" style="background-color: #fff";
+    font-size:15px;
+    font-weight:400;>
+
+      <div class="container text-center text-md-start mt-0">
+        <!-- Grid row -->
+        <div class="row mt-1">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-1">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold">Classy Collectibles</h6>
+            <hr
+                class="mb-1 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              Classy Collectibles is a premier e-commerce platform dedicated to the sale of unique and high-quality collectibles.
+              The website boasts a sleek, user-friendly design that showcases the wide range of collectibles in an elegant and organized manner.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-2">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Products</h6>
+            <hr
+                class="mb-0 mt-0 d-inline-block mx-auto"
+                style="width: 50px; background-color: #7c4dff; height: 1px"
+                />
+            <p>
+              <a href="#!" class="text-dark">Premium Watches</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Shirts</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">T-Shirts</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Suits</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Formals</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-0">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Useful links</h6>
+            <hr
+                class="mb-0 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              <a  href="#!" class="text-dark">Home</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Products</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Services</a>
+            </p>
+            <p>
+              <a  href="#!" class="text-dark">Checkout</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Signin</a>
+            </p>
+            <p>
+              <a href="#!" class="text-dark">Login</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-1">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Contact</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p><i class="fas fa-home mr-1"></i> India, 5060XX, XX</p>
+            <p><i class="fas fa-envelope mr-1"></i> classycollectiblese@yahooo.com</p>
+            <p><i class="fas fa-phone mr-1"></i> +91-93469058XX</p>
+            <p><i class="fas fa-print mr-1"></i> +91-88797925XX</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  </footer>
+  <!-- Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static "assets/vendor/purecounter/purecounter_vanilla.js"%}"></script>
+  <script src="{% static "assets/vendor/aos/aos.js"%}"></script>
+  <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+  <script src="{% static "assets/vendor/glightbox/js/glightbox.min.js"%}"></script>
+  <script src="{% static "assets/vendor/isotope-layout/isotope.pkgd.min.js"%}"></script>
+  <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js"%}"></script>
+  <script src="{% static "assets/vendor/php-email-form/validate.js"%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static "assets/js/main.js"%}"></script>
+
+  
+  <!-- Cart -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+   
+<script>
+  if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    updateCart(cart);
+
+}
+// add or increment code
+
+// $('.cart').click(function() {
+$('.divpr').on('click', 'button.cart', function() {
+    var idstr = this.id.toString();
+    console.log(idstr)
+
+    if (cart[idstr] != undefined) {
+        qty = cart[idstr][0] + 1;
+
+    } else {
+        qty = 1;
+        name = document.getElementById('name' + idstr).innerHTML;
+        price = document.getElementById('price' + idstr).innerHTML;
+        cart[idstr] = [qty, name, price];
+        
+    }
+    updateCart(cart);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    console.log( Object.keys(cart).length)
+    document.getElementById("popcart").click();
+});
+// add pop over to cart
+
+$('#popcart').popover();
+
+updatePopover(cart);
+function updatePopover(cart) {
+
+    
+    console.log('we are  inside update popover');
+    
+    var popStr = "";
+    var popStr = popStr + "<h5> cart for your items in my shopping cart </h5> <div class='mx-2 my-2'>";
+    var i = 1;
+    for (var item in cart) {
+        popStr = popStr + "<b>" + i + "</b>. ";
+        popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "..." + "<b>" +cart[item][0] + "</b>"+ "Qty"  + '<br>';
+        i = i + 1;
+    }
+
+    popStr = popStr + "</div> <a href='/checkout'><button class='buttonn' id='clearCart'>Checkout</button></a>  <button class='buttonn' onclick='clearCart()' id='clearCart'>ClearCart</button>"
+    document.getElementById('popcart').setAttribute('data-content', popStr);
+    $('#popcart').popover('show');
+    document.getElementById("popcart").click();
+}
+
+function clearCart() {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    for (var item in cart) {
+        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="cart btn-sm mt-0 buttonn">AddtoCard <i class="fa-solid fa-cart-shopping"></i></button>'
+    }
+    localStorage.clear();
+    cart = {};
+    updateCart(cart);
+    
+   let clear= document.getElementById("popcart").click();
+   document.getElementById("popcart").click();
+  
+}
+
+function updateCart(cart) {
+    var sum = 0;
+    for (var item in cart) {
+        sum = sum + cart[item][0];
+        document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "'class='bnn minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='bnn plus'> + </button>";
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+    console.log(cart);
+    updatePopover(cart);
+    document.getElementById("popcart").click();
+}
+
+//if plus or minus button is clicked change the cart as well as the display value
+$('.divpr').on("click", "button.minus", function() {
+
+    a = this.id.slice(7, );
+    cart['pr' + a][0] = cart['pr' + a][0] - 1;
+    cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+    
+
+})
+
+
+$('.divpr').on("click", "button.plus", function() {
+
+    a = this.id.slice(6, );
+    cart['pr' + a][0] = cart['pr' + a][0] + 1;
+
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+
+  
+})
+</script>
+  
+</body>
+
+</html>
